@@ -3,23 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H4cFl1x</title>
+    <title>HackFlix</title>
     <style>
         body {
-            background: black;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             font-family: Arial, sans-serif;
+            background-color: #181818;
+            color: white;
+            margin: 0;
+            padding: 0;
         }
-        h1 {
+
+        .navbar {
+            background-color: #202020;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
             font-size: 24px;
+            font-weight: bold;
+            color: red;
+        }
+
+        .main-container {
+            display: flex;
+            padding: 20px;
+        }
+
+        .video-container {
+            flex: 3;
+        }
+
+        .video-container video {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .sidebar {
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        .video-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .video-item img {
+            width: 100px;
+            border-radius: 5px;
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>¡Accediste, eres el más capito! 😎🔥</h1>
+
+    <div class="navbar">
+        <div class="logo">HackFlix</div>
+    </div>
+
+    <div class="main-container">
+        <div class="video-container">
+            <video controls>
+                <source src="URL_DEL_VIDEO_AQUI.mp4" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+            </video>
+        </div>
+
+        <div class="sidebar">
+            <h3>Videos recomendados</h3>
+            <div class="video-item" onclick="cambiarVideo('URL_DEL_VIDEO_1.mp4')">
+                <img src="URL_DEL_THUMBNAIL_1.jpg" alt="Video 1">
+                <span>Video 1</span>
+            </div>
+            <div class="video-item" onclick="cambiarVideo('URL_DEL_VIDEO_2.mp4')">
+                <img src="URL_DEL_THUMBNAIL_2.jpg" alt="Video 2">
+                <span>Video 2</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function cambiarVideo(nuevaURL) {
+            document.querySelector("video source").src = nuevaURL;
+            document.querySelector("video").load();
+        }
+    </script>
+
 </body>
 </html>
