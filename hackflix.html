@@ -54,10 +54,9 @@
             cursor: pointer;
         }
 
-        .video-item img {
-            width: 100px;
+        .video-item video {
+            width: 120px;
             border-radius: 5px;
-            margin-right: 10px;
         }
     </style>
 </head>
@@ -69,7 +68,7 @@
 
     <div class="main-container">
         <div class="video-container">
-            <p>Instalacion De Termux</p>
+            <p>Instalación de Termux</p>
             <video controls style="width: 800px; height: 450px;">
                 <source src="i.mp4" type="video/mp4">
                 Tu navegador no soporta la etiqueta de video.
@@ -78,38 +77,54 @@
 
         <div class="sidebar">
             <h3>Videos recomendados</h3>
-            
+
             <div class="video-item" onclick="cambiarVideo('Cuidado con el osint.mp4')">
-    <video width="120" muted autoplay loop>
-        <source src="Cuidado con el osint.mp4" type="video/mp4">
-    </video>
-</div>
+                <video width="120" muted autoplay loop>
+                    <source src="Cuidado con el osint.mp4" type="video/mp4">
+                </video>
+            </div>
 
             <div class="video-item" onclick="cambiarVideo('URL_DEL_VIDEO_2.mp4')">
-                <img src="URL_DEL_THUMBNAIL_2.jpg" alt="Video 2">
-                <span>Video 2</span>
+                <video width="120" muted autoplay loop>
+                    <source src="URL_DEL_VIDEO_2.mp4" type="video/mp4">
+                </video>
             </div>
         </div>
     </div>
 
     <script>
         function cambiarVideo(nuevaURL) {
-            document.querySelector("video source").src = nuevaURL;
-            document.querySelector("video").load();
+            let videoPrincipal = document.querySelector(".video-container video");
+            let fuentePrincipal = videoPrincipal.querySelector("source");
+
+            fuentePrincipal.src = nuevaURL;
+            videoPrincipal.load(); // Recarga el video principal
+
+            // También actualiza la vista previa en la lista de videos
+            let videosMiniatura = document.querySelectorAll(".video-item video");
+            videosMiniatura.forEach(video => {
+                if (video.querySelector("source").src.includes(nuevaURL)) {
+                    video.play(); // Reproduce la miniatura actualizada
+                } else {
+                    video.pause(); // Pausa las demás para evitar bucles innecesarios
+                }
+            });
         }
     </script>
-<script>
-document.addEventListener("contextmenu", function(event) {
-    event.preventDefault(); // Bloquea el clic derecho
-    alert("¿Qué Crees Que Haces?");
-});
 
-document.addEventListener("keydown", function(event) {
-    if (event.ctrlKey || (event.keyCode >= 112 && event.keyCode <= 123)) {
-        event.preventDefault(); // Bloquea la tecla Ctrl y las teclas F1-F12
-        alert("¿Qué Crees Que Haces?");
-    }
-});
-</script>
+    <script>
+        document.addEventListener("contextmenu", function(event) {
+            event.preventDefault(); // Bloquea el clic derecho
+            alert("¿Qué Crees Que Haces?");
+        });
+
+        document.addEventListener("keydown", function(event) {
+            if (event.ctrlKey || (event.keyCode >= 112 && event.keyCode <= 123)) {
+                event.preventDefault(); // Bloquea la tecla Ctrl y las teclas F1-F12
+                alert("¿Qué Crees Que Haces?");
+            }
+        });
+    </script>
+
 </body>
 </html>
