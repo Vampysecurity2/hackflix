@@ -95,6 +95,18 @@
             document.querySelector("video").load();
         }
     </script>
+<script>
+document.addEventListener("contextmenu", function(event) {
+    event.preventDefault(); // Bloquea el clic derecho
+    alert("¿Que Crees Que Haces?");
+});
 
+document.addEventListener("keydown", function(event) {
+    if (event.ctrlKey || (event.keyCode >= 112 && event.keyCode <= 123)) {
+        event.preventDefault(); // Bloquea la tecla Ctrl y las teclas F1-F12
+        alert("¿Que Crees Que Haces?");
+    }
+});
+</script>
 </body>
 </html>
