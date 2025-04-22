@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login H4cFl1x</title>
+    <style>
+        body {
+            background: url('https://via.placeholder.com/1920x1080') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
+        .login-container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .login-container h2 {
+            color: #fff;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #28a745;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Acceso a H4cFl1x</h2>
+        <input type="text" id="usuario" placeholder="Usuario">
+        <input type="password" id="password" placeholder="Contraseña">
+        <button onclick="validarLogin()">Acceder</button>
+    </div>
+
+    <script>
+        function validarLogin() {
+            let user = document.getElementById("usuario").value;
+            let pass = document.getElementById("password").value;
+
+            let userValido = "VampySecurity"; // Cámbialo por el real
+            let passValido = "RevelionOscura1k."; // Cámbialo por el real
+
+            if (user === userValido && pass === passValido) {
+                alert("¡Bienvenido a H4cFl1x!");
+                window.location.href = "hackflix.html"; // Redirección al sitio principal
+            } else {
+                alert("Usuario o contraseña incorrectos.");
+            }
+        }
+    </script>
+
+</body>
+</html>
